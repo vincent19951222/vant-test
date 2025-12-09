@@ -1,0 +1,82 @@
+<navigation-bar title="个人中心" back="{{false}}"></navigation-bar>
+
+<scroll-view scroll-y class="container p-5 pb-32 space-y-6">
+  
+  <!-- Profile Header -->
+  <view class="flex items-center gap-4 mb-2">
+    <view class="relative">
+      <view class="w-16 h-16 rounded-full bg-slate-200 overflow-hidden border-2 border-white shadow-md flex items-center justify-center">
+        <image wx:if="{{userInfo.avatar && userInfo.avatar !== ''}}" src="{{userInfo.avatar}}" class="w-full h-full object-cover" binderror="onAvatarError" />
+        <van-icon wx:else name="user-o" size="32px" color="#94a3b8" />
+      </view>
+      <view class="absolute bottom-0 right-0 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+        <van-icon name="success" color="#fff" size="10px" />
+      </view>
+    </view>
+    <view>
+      <text class="block text-xl font-bold text-slate-900">{{userInfo.name}}</text>
+      <text class="block text-sm text-slate-500">{{userInfo.role}}</text>
+    </view>
+    <view class="ml-auto p-2 text-slate-400 hover:text-slate-600">
+      <van-icon name="qr" size="24px" />
+    </view>
+  </view>
+
+  <!-- VIP/Level Card -->
+  <view class="bg-gradient-blue rounded-2xl p-4 text-white shadow-lg relative overflow-hidden">
+    <view class="absolute -right-4 -top-4 w-24 h-24 bg-white-10 rounded-full blur-2xl"></view>
+    <view class="relative z-10 flex justify-between items-center">
+      <view>
+        <text class="block text-xs text-blue-100 mb-1">本月对话额度</text>
+        <view class="text-2xl font-bold font-mono">85<text class="text-sm font-normal text-blue-200">/100</text></view>
+      </view>
+      <view class="bg-white-20 hover:bg-white-30 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-medium transition-colors">
+        查看详情
+      </view>
+    </view>
+  </view>
+
+  <!-- Stats Grid -->
+  <view class="grid grid-cols-2 gap-3">
+    <view class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-3">
+      <view class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500">
+        <van-icon name="clock-o" size="20px" />
+      </view>
+      <view>
+        <text class="block text-lg font-bold text-slate-800">{{stats.history}}</text>
+        <text class="block text-xs text-slate-400">历史对话</text>
+      </view>
+    </view>
+    <view class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-3">
+      <view class="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center text-purple-500">
+        <van-icon name="star-o" size="20px" />
+      </view>
+      <view>
+        <text class="block text-lg font-bold text-slate-800">{{stats.favorites}}</text>
+        <text class="block text-xs text-slate-400">收藏问答</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Settings Menu -->
+  <view class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+    <van-cell-group border="{{false}}">
+      <block wx:for="{{menuItems}}" wx:key="title">
+        <van-cell 
+          title="{{item.title}}" 
+          icon="{{item.icon}}" 
+          is-link 
+          bind:click="onMenuClick" 
+          data-title="{{item.title}}"
+          border="{{index < menuItems.length - 1}}"
+        />
+      </block>
+    </van-cell-group>
+  </view>
+
+  <!-- Logout -->
+  <button class="w-full bg-white border border-slate-100 text-red-500 font-medium py-3.5 rounded-2xl shadow-sm active:bg-red-50 transition-colors" bindtap="onLogout">
+    退出登录
+  </button>
+
+</scroll-view>

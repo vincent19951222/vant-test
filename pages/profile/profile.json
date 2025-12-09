@@ -2,5 +2,5 @@
   "usingComponents": {
     "navigation-bar": "/components/navigation-bar/navigation-bar"
   },
-  "navigationBarTitleText": "企业 AI 助手"
+  "navigationBarTitleText": "个人中心"
 }

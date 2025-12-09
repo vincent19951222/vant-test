@@ -1,7 +1,94 @@
-<!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    Weixin
+<navigation-bar title="企业 AI 助手" back="{{false}}"></navigation-bar>
+
+<scroll-view class="chat-container" scroll-y enable-flex scroll-with-animation>
+  <view class="message-list">
+    <block wx:for="{{messages}}" wx:key="index">
+      
+      <!-- Time -->
+      <view wx:if="{{item.type === 'time'}}" class="flex justify-center mb-4">
+        <text class="text-xs text-secondary bg-gray-100 px-2 py-1 rounded">{{item.content}}</text>
+      </view>
+
+      <!-- Bot Message -->
+      <view wx:if="{{item.type === 'bot'}}" class="flex justify-start mb-6 fade-in-up">
+        <view class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mr-2 shrink-0">
+          <van-icon name="service" />
+        </view>
+        <view class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm max-w-85 border border-slate-50">
+          <block wx:if="{{item.isWelcome}}">
+            <view class="flex items-center gap-2 mb-2">
+              <van-tag type="primary" plain>智能办公助手</van-tag>
+              <van-tag type="success" plain>在线</van-tag>
+            </view>
+          </block>
+          
+          <text class="text-sm leading-relaxed text-slate-700" user-select>{{item.content}}</text>
+          
+          <block wx:if="{{item.suggestions}}">
+            <view class="mt-4 pt-4 border-t border-slate-100 grid grid-cols-2 gap-2">
+              <block wx:for="{{item.suggestions}}" wx:for-item="sug" wx:key="text">
+                <view class="text-left p-2 bg-slate-50 rounded hover:bg-blue-50" bindtap="onQuickAction" data-action="{{sug.text}}">
+                  <view class="text-xs text-secondary mb-1">{{sug.category}}</view>
+                  <view class="text-sm font-medium text-slate-700">{{sug.text}}</view>
+                </view>
+              </block>
+            </view>
+          </block>
+
+          <block wx:if="{{item.isRich}}">
+             <view class="mt-3 flex items-center gap-3 border-t border-slate-50 pt-3">
+                <view class="flex items-center text-xs text-secondary">
+                  <van-icon name="description" class="mr-1" /> 复制
+                </view>
+                <view class="flex items-center text-xs text-secondary">
+                   <van-icon name="good-job-o" class="mr-1" /> 有用
+                </view>
+             </view>
+          </block>
+        </view>
+      </view>
+
+      <!-- User Message -->
+      <view wx:if="{{item.type === 'user'}}" class="flex justify-end mb-6 fade-in-up">
+        <view class="bg-primary text-white px-5 py-3 rounded-2xl rounded-tr-none shadow-lg max-w-80">
+          <text class="text-sm leading-normal" user-select>{{item.content}}</text>
+        </view>
+      </view>
+
+    </block>
   </view>
 </scroll-view>
+
+<!-- Bottom Input Area -->
+<view class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 z-50 pb-20" style="padding-bottom: {{safeAreaBottom + 50}}px;">
+  
+  <!-- Quick Actions -->
+  <scroll-view scroll-x class="whitespace-nowrap px-4 py-2 border-b border-slate-50" style="width: 100%;">
+    <view class="flex gap-2">
+      <block wx:for="{{quickActions}}" wx:key="text">
+        <view class="inline-flex items-center px-3 py-1 bg-white border border-slate-100 rounded-full text-xs font-medium text-slate-600 mr-2" bindtap="onQuickAction" data-action="{{text}}">
+           <van-icon name="{{item.icon}}" class="mr-1" color="{{item.color}}" />
+           {{item.text}}
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <view class="px-4 py-2 flex items-end gap-2 bg-white">
+    <view class="flex-1 bg-slate-50 rounded-2xl flex items-center p-1 border border-slate-100">
+      <van-icon name="add-o" size="24px" color="#94a3b8" class="p-2" />
+      <input 
+        class="flex-1 bg-transparent text-sm px-2 py-2" 
+        placeholder="输入您的问题..." 
+        value="{{inputValue}}"
+        bindinput="onInput"
+        confirm-type="send"
+        bindconfirm="onSend"
+      />
+      <van-icon name="volume-o" size="20px" color="#94a3b8" class="p-2" />
+    </view>
+    <view class="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-all" bindtap="onSend">
+      <van-icon name="guide-o" color="#fff" size="20px" />
+    </view>
+  </view>
+</view>

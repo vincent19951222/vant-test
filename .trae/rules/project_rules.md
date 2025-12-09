@@ -1,4 +1,5 @@
 - Always use Chinese to reply
+- “不要忘了在 json 文件的 usingComponents 里引入 van-button
 - Always use MCP(Model Context Protocol) to search the latest infomation and scrape the offical content to clear the requirements
 - Always plan first
 - After making changes, ALWAYS make sure to start up a new server so I can test it.

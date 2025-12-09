@@ -1,0 +1,75 @@
+<navigation-bar title="知识库" back="{{false}}"></navigation-bar>
+
+<view class="container">
+  <!-- Search -->
+  <view class="sticky-header bg-white z-30 pb-4 shadow-sm rounded-b-3xl">
+    <van-search
+      placeholder="搜索文档、制度或问答..."
+      shape="round"
+      background="#fff"
+      bind:search="onSearch"
+    />
+  </view>
+
+  <scroll-view scroll-y class="content-scroll">
+    <view class="p-5 pb-32 space-y-6">
+      
+      <!-- Categories -->
+      <view class="section">
+        <view class="flex items-center justify-between mb-3 px-1">
+          <text class="text-base font-bold text-slate-800">热门分类</text>
+          <text class="text-xs text-blue-600 font-medium" bindtap="onViewAll">查看全部</text>
+        </view>
+        <view class="grid grid-cols-4 gap-3">
+          <block wx:for="{{categories}}" wx:key="name">
+            <view class="flex flex-col items-center gap-2">
+              <view class="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform active:scale-95" style="background-color: {{item.bg}}; color: {{item.color}};">
+                <van-icon name="{{item.icon}}" size="24px" />
+              </view>
+              <text class="text-xs font-medium text-slate-600">{{item.name}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      <!-- Recommended Docs -->
+      <view class="section">
+        <text class="block text-base font-bold text-slate-800 mb-3 px-1">推荐文档</text>
+        <scroll-view scroll-x class="whitespace-nowrap -mx-5 px-5 pb-2" style="width: 100vw;">
+          <view class="flex gap-3">
+            <block wx:for="{{recommendedDocs}}" wx:key="title">
+              <view class="flex-shrink-0 w-60 bg-white p-4 rounded-xl border border-slate-100 shadow-sm active:scale-95 transition-transform inline-block align-top">
+                <view class="flex items-start justify-between mb-2">
+                  <view class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: {{item.bg}}; color: {{item.color}};">
+                    <van-icon name="{{item.icon}}" />
+                  </view>
+                  <view wx:if="{{item.isNew}}" class="text-xs bg-red-50 text-red-500 px-1.5 py-0.5 rounded font-medium">New</view>
+                </view>
+                <view class="font-bold text-slate-800 text-sm mb-1 truncate">{{item.title}}</view>
+                <view class="text-xs text-slate-400">{{item.meta}}</view>
+              </view>
+            </block>
+          </view>
+        </scroll-view>
+      </view>
+
+      <!-- FAQ List -->
+      <view class="section">
+        <text class="block text-base font-bold text-slate-800 mb-3 px-1">高频问答</text>
+        <view class="bg-white rounded-2xl shadow-sm border border-slate-100">
+          <block wx:for="{{faqList}}" wx:key="id">
+            <view class="p-4 flex items-center gap-3 active:bg-slate-50 transition-colors {{index < faqList.length - 1 ? 'border-b border-slate-50' : ''}}">
+              <text class="text-lg font-bold italic font-serif" style="color: {{item.rankColor}};">{{item.id}}</text>
+              <view class="flex-1">
+                <text class="block text-sm font-medium text-slate-700">{{item.question}}</text>
+                <text class="block text-xs text-slate-400 mt-0.5">{{item.meta}}</text>
+              </view>
+              <van-icon name="arrow" color="#cbd5e1" size="16px" />
+            </view>
+          </block>
+        </view>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>

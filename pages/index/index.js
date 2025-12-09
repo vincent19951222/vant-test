@@ -7,6 +7,8 @@ Page({
         type: 'bot',
         content: '👋 你好，我是你的智能办公助手\n我可以帮你处理文档、查询制度、撰写周报，或者回答任何关于公司业务的问题。',
         isWelcome: true,
+        isRich: true,
+        richContent: '<p>👋 你好，我是你的智能办公助手</p><p>我可以帮你处理文档、查询制度、撰写周报，或者回答任何关于公司业务的问题。</p>',
         suggestions: [
           { category: '人事', text: '年假怎么算？' },
           { category: '财务', text: '报销流程' }
@@ -22,15 +24,16 @@ Page({
       },
       {
         type: 'bot',
-        content: '好的，已为您生成 Q3 市场推广总结草稿：\n• **核心指标**：总投入 ¥50W，带来线索 1,200 条。\n• **ROI 表现**：相比 Q2 提升了 15%，主要得益于精准渠道投放。\n• **亮点项目**：企业数字化转型白皮书下载量突破新高。\n您可以直接复制使用，或告诉我需要补充哪些细节。',
-        isRich: true
+        content: '好的，已为您生成 Q3 市场推广总结草稿：\n• 核心指标：总投入 ¥50W，带来线索 1,200 条。\n• ROI 表现：相比 Q2 提升了 15%，主要得益于精准渠道投放。\n• 亮点项目：企业数字化转型白皮书下载量突破新高。\n您可以直接复制使用，或告诉我需要补充哪些细节。',
+        isRich: true,
+        richContent: '<p>好的，已为您生成 Q3 市场推广总结草稿：</p><ul><li><strong>核心指标</strong>：总投入 ¥50W，带来线索 1,200 条。</li><li><strong>ROI 表现</strong>：相比 Q2 提升了 15%，主要得益于精准渠道投放。</li><li><strong>亮点项目</strong>：企业数字化转型白皮书下载量突破新高。</li></ul><p>您可以直接复制使用，或告诉我需要补充哪些细节。</p>'
       }
     ],
     inputValue: '',
     quickActions: [
       { icon: 'sparkles', text: '润色周报', color: '#1890ff' },
       { icon: 'description', text: '差旅制度', color: '#64748b' },
-      { icon: 'calender', text: '会议室预定', color: '#64748b' },
+      { icon: 'calendar-o', text: '会议室预定', color: '#64748b' },
       { icon: 'chart-trending-o', text: '数据分析', color: '#64748b' }
     ],
     safeAreaBottom: 0
@@ -44,7 +47,9 @@ Page({
   },
 
   onShow() {
-    this.getTabBar().init()
+    if (this.getTabBar && this.getTabBar()) {
+      this.getTabBar().init()
+    }
   },
 
   onInput(e) {

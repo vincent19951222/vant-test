@@ -22,7 +22,12 @@
             </view>
           </block>
           
-          <text class="text-sm leading-relaxed text-slate-700" user-select>{{item.content}}</text>
+          <block wx:if="{{item.isRich}}">
+            <rich-text class="text-sm leading-relaxed text-slate-700" nodes="{{item.richContent}}"></rich-text>
+          </block>
+          <block wx:else>
+            <text class="text-sm leading-relaxed text-slate-700" user-select space="ensp">{{item.content}}</text>
+          </block>
           
           <block wx:if="{{item.suggestions}}">
             <view class="mt-4 pt-4 border-t border-slate-100 grid grid-cols-2 gap-2">
@@ -66,7 +71,7 @@
   <scroll-view scroll-x class="whitespace-nowrap px-4 py-2 border-b border-slate-50" style="width: 100%;">
     <view class="flex gap-2">
       <block wx:for="{{quickActions}}" wx:key="text">
-        <view class="inline-flex items-center px-3 py-1 bg-white border border-slate-100 rounded-full text-xs font-medium text-slate-600 mr-2" bindtap="onQuickAction" data-action="{{text}}">
+        <view class="inline-flex items-center px-3 py-1 bg-white border border-slate-100 rounded-full text-xs font-medium text-slate-600 mr-2" bindtap="onQuickAction" data-action="{{item.text}}">
            <van-icon name="{{item.icon}}" class="mr-1" color="{{item.color}}" />
            {{item.text}}
         </view>

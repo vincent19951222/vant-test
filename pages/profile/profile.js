@@ -21,7 +21,9 @@ Page({
   },
 
   onShow() {
-    this.getTabBar().init()
+    if (this.getTabBar && this.getTabBar()) {
+      this.getTabBar().init()
+    }
   },
 
   onAvatarError() {

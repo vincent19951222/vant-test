@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git reset HEAD)",
+      "Bash(git commit -m \"$(cat <<''EOF''\n添加知识库页面、个人中心页面和底部导航\n\n### 新增功能\n- 添加知识库页面 (pages/knowledge/)\n- 添加个人中心页面 (pages/profile/)\n- 添加自定义底部导航栏 (custom-tab-bar/)\n- 添加 Vant UI 组件库依赖\n- 创建 .gitignore 文件\n\n### 修改内容\n- 更新页面配置 (app.json)\n- 优化首页样式和结构\n- 更新项目配置文件\nEOF\n)\")",
+      "Bash(git commit:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

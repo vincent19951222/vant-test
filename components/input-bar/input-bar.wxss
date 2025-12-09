@@ -1,0 +1,90 @@
+.input-container {
+  position: fixed;
+  bottom: calc(100rpx + env(safe-area-inset-bottom)); /* Above TabBar */
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, #F5F7FA, rgba(245, 247, 250, 0));
+  padding-bottom: 20rpx;
+  z-index: 100;
+}
+
+.quick-actions {
+  white-space: nowrap;
+  padding: 0 32rpx 24rpx 32rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12rpx 24rpx;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 100rpx;
+  margin-right: 16rpx;
+  font-size: 24rpx;
+  color: #475569;
+  box-shadow: 0 2rpx 4rpx rgba(0,0,0,0.05);
+}
+
+.action-icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+
+.input-box-wrapper {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 32rpx;
+  gap: 16rpx;
+}
+
+.input-box {
+  flex: 1;
+  background: white;
+  border-radius: 48rpx;
+  display: flex;
+  align-items: center;
+  padding: 12rpx;
+  box-shadow: 0 4rpx 24rpx rgba(0,0,0,0.06);
+  border: 1px solid #f1f5f9;
+}
+
+.icon-btn {
+  padding: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-textarea {
+  flex: 1;
+  font-size: 30rpx;
+  padding: 10rpx;
+  max-height: 200rpx;
+  min-height: 40rpx;
+  width: auto;
+}
+
+.placeholder {
+  color: #94a3b8;
+}
+
+.send-btn {
+  width: 96rpx;
+  height: 96rpx;
+  background: #1890ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 20rpx rgba(24, 144, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.send-icon {
+  width: 40rpx;
+  height: 40rpx;
+}

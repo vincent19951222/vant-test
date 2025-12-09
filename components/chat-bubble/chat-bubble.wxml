@@ -1,0 +1,18 @@
+<view class="bubble-container {{msg.role === 'user' ? 'user' : 'assistant'}}">
+  <!-- Assistant Icon -->
+  <view wx:if="{{msg.role === 'assistant'}}" class="avatar">
+    <!-- Placeholder for bot icon, using chat icon for now or simple view -->
+    <view class="bot-icon-placeholder">
+       <image src="/assets/chat.svg" class="bot-icon"></image>
+    </view>
+  </view>
+  
+  <view class="bubble-content">
+    <text user-select class="message-text">{{msg.content}}</text>
+    
+    <!-- Actions for assistant (Copy, etc) - Simplified for now -->
+    <view wx:if="{{msg.role === 'assistant'}}" class="actions">
+      <!-- Actions can be added here -->
+    </view>
+  </view>
+</view>

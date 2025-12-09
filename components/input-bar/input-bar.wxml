@@ -1,0 +1,48 @@
+<view class="input-container" style="bottom: calc(100rpx + env(safe-area-inset-bottom) + {{keyboardHeight}}px)">
+  <!-- Quick Actions -->
+  <scroll-view scroll-x class="quick-actions" show-scrollbar="{{false}}">
+    <view class="action-btn" bindtap="onQuickAction" data-text="润色周报">
+      <image src="/assets/chat.svg" class="action-icon"></image> <!-- Placeholder -->
+      <text>润色周报</text>
+    </view>
+    <view class="action-btn" bindtap="onQuickAction" data-text="差旅制度">
+      <text>差旅制度</text>
+    </view>
+    <view class="action-btn" bindtap="onQuickAction" data-text="会议室预定">
+      <text>会议室预定</text>
+    </view>
+    <view class="action-btn" bindtap="onQuickAction" data-text="数据分析">
+      <text>数据分析</text>
+    </view>
+  </scroll-view>
+
+  <!-- Input Area -->
+  <view class="input-box-wrapper">
+    <view class="input-box">
+       <view class="icon-btn">
+          <text style="font-size: 40rpx; color: #94a3b8;">+</text> <!-- Placeholder for Plus Icon -->
+       </view>
+       <textarea 
+          class="input-textarea"
+          auto-height 
+          placeholder="输入您的问题..." 
+          placeholder-class="placeholder"
+          value="{{inputValue}}"
+          bindinput="onInput"
+          confirm-type="send"
+          bindconfirm="onSend"
+          maxlength="500"
+          cursor-spacing="20"
+          adjust-position="{{false}}"
+          bindkeyboardheightchange="onKeyboardHeightChange"
+       ></textarea>
+       <view class="icon-btn">
+           <!-- Mic Icon Placeholder -->
+       </view>
+    </view>
+    
+    <view class="send-btn" bindtap="onSend">
+       <image src="/assets/chat-active.svg" class="send-icon" style="filter: brightness(0) invert(1);"></image>
+    </view>
+  </view>
+</view>

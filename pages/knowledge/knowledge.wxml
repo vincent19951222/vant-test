@@ -1,0 +1,117 @@
+<navigation-bar title="知识库" back="{{false}}" color="black" background="#FFFFFF"></navigation-bar>
+
+<view class="container">
+  <!-- Search -->
+  <view class="search-container">
+    <view class="search-box">
+      <image src="/assets/search.svg" class="search-icon"></image>
+      <input type="text" placeholder="搜索文档、制度或问答..." class="search-input" placeholder-class="placeholder" />
+    </view>
+  </view>
+
+  <scroll-view class="content" scroll-y show-scrollbar="{{false}}" enhanced>
+    <!-- Categories Grid -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">热门分类</text>
+        <text class="section-more">查看全部</text>
+      </view>
+      <view class="grid-container">
+        <view class="grid-item">
+          <view class="grid-icon-box bg-blue">
+            <image src="/assets/users.svg" class="grid-icon"></image>
+          </view>
+          <text class="grid-text">人事行政</text>
+        </view>
+        <view class="grid-item">
+          <view class="grid-icon-box bg-indigo">
+            <image src="/assets/monitor.svg" class="grid-icon"></image>
+          </view>
+          <text class="grid-text">IT服务</text>
+        </view>
+        <view class="grid-item">
+          <view class="grid-icon-box bg-orange">
+            <image src="/assets/wallet.svg" class="grid-icon"></image>
+          </view>
+          <text class="grid-text">财务报销</text>
+        </view>
+        <view class="grid-item">
+          <view class="grid-icon-box bg-emerald">
+            <image src="/assets/file-text.svg" class="grid-icon"></image>
+          </view>
+          <text class="grid-text">规章制度</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Recommended Docs -->
+    <view class="section">
+      <text class="section-title">推荐文档</text>
+      <scroll-view scroll-x class="horizontal-scroll" show-scrollbar="{{false}}" enhanced>
+        <view class="card-container">
+           <!-- Card 1 -->
+           <view class="doc-card">
+              <view class="doc-header">
+                 <view class="doc-icon-box bg-blue-light">
+                    <image src="/assets/file.svg" class="doc-icon"></image>
+                 </view>
+                 <text class="tag-new">New</text>
+              </view>
+              <text class="doc-title">2025年员工手册 v2.0</text>
+              <text class="doc-info">更新于 3天前 • 人力资源部</text>
+           </view>
+           
+           <!-- Card 2 -->
+           <view class="doc-card">
+              <view class="doc-header">
+                 <view class="doc-icon-box bg-green-light">
+                    <image src="/assets/shield.svg" class="doc-icon"></image>
+                 </view>
+              </view>
+              <text class="doc-title">信息安全合规指南</text>
+              <text class="doc-info">更新于 1周前 • IT安全部</text>
+           </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- Common Questions List -->
+    <view class="section">
+       <text class="section-title">高频问答</text>
+       <view class="list-container">
+          <!-- Item 1 -->
+          <view class="list-item">
+             <text class="rank rank-1">1</text>
+             <view class="list-content">
+                <text class="list-title">如何申请VPN远程访问？</text>
+                <text class="list-desc">IT服务 • 1234次阅读</text>
+             </view>
+             <image src="/assets/chevron-right.svg" class="arrow-icon"></image>
+          </view>
+
+          <!-- Item 2 -->
+          <view class="list-item">
+             <text class="rank rank-2">2</text>
+             <view class="list-content">
+                <text class="list-title">加班餐补报销标准是什么？</text>
+                <text class="list-desc">财务报销 • 890次阅读</text>
+             </view>
+             <image src="/assets/chevron-right.svg" class="arrow-icon"></image>
+          </view>
+
+          <!-- Item 3 -->
+          <view class="list-item">
+             <text class="rank rank-3">3</text>
+             <view class="list-content">
+                <text class="list-title">年终绩效考核什么时候开始？</text>
+                <text class="list-desc">人事行政 • 650次阅读</text>
+             </view>
+             <image src="/assets/chevron-right.svg" class="arrow-icon"></image>
+          </view>
+       </view>
+    </view>
+
+    <!-- Padding for TabBar -->
+    <view style="height: 200rpx;"></view>
+  </scroll-view>
+</view>

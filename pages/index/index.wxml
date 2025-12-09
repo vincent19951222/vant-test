@@ -1,7 +1,28 @@
-<!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    Weixin
-  </view>
-</scroll-view>
+<navigation-bar title="企业 AI 助手" back="{{false}}" color="black" background="#F5F7FA"></navigation-bar>
+
+<view class="container">
+  <scroll-view 
+    class="chat-list" 
+    scroll-y 
+    scroll-into-view="{{scrollIntoView}}" 
+    scroll-with-animation
+    enhanced
+    show-scrollbar="{{false}}"
+  >
+    <view class="chat-content">
+       <!-- Time Divider -->
+       <view class="time-divider">
+         <text>今天 10:23</text>
+       </view>
+
+       <block wx:for="{{messages}}" wx:key="index">
+         <chat-bubble id="msg-{{index}}" msg="{{item}}"></chat-bubble>
+       </block>
+       
+       <!-- Spacer for input bar -->
+       <view style="height: 300rpx;"></view>
+    </view>
+  </scroll-view>
+
+  <input-bar bind:send="onSend"></input-bar>
+</view>

@@ -1,0 +1,91 @@
+<navigation-bar title="个人中心" back="{{false}}" color="black" background="#F5F7FA"></navigation-bar>
+
+<view class="container">
+  <scroll-view class="content" scroll-y show-scrollbar="{{false}}" enhanced>
+    
+    <!-- Profile Header -->
+    <view class="profile-header">
+      <view class="avatar-container">
+        <view class="avatar-box">
+          <image src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="avatar-img" mode="aspectFill"></image>
+        </view>
+        <view class="verified-badge">
+          <image src="/assets/check.svg" class="check-icon"></image>
+        </view>
+      </view>
+      <view class="user-info">
+        <text class="user-name">张三</text>
+        <text class="user-role">产品研发部 • 高级设计师</text>
+      </view>
+      <view class="qr-btn">
+        <image src="/assets/qr-code.svg" class="qr-icon"></image>
+      </view>
+    </view>
+
+    <!-- VIP Card -->
+    <view class="vip-card">
+      <view class="card-glow"></view>
+      <view class="card-content">
+        <view>
+          <text class="card-label">本月对话额度</text>
+          <view class="card-value-box">
+            <text class="card-value">85</text>
+            <text class="card-total">/100</text>
+          </view>
+        </view>
+        <view class="card-btn">
+          <text>查看详情</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Stats Grid -->
+    <view class="stats-grid">
+      <view class="stat-card">
+        <view class="stat-icon-box bg-orange">
+          <image src="/assets/history.svg" class="stat-icon"></image>
+        </view>
+        <view>
+          <text class="stat-value">128</text>
+          <text class="stat-label">历史对话</text>
+        </view>
+      </view>
+      <view class="stat-card">
+        <view class="stat-icon-box bg-purple">
+          <image src="/assets/star.svg" class="stat-icon"></image>
+        </view>
+        <view>
+          <text class="stat-value">12</text>
+          <text class="stat-label">收藏问答</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Settings Menu -->
+    <view class="menu-list">
+      <view class="menu-item border-bottom">
+        <image src="/assets/bell.svg" class="menu-icon"></image>
+        <text class="menu-text">消息通知</text>
+        <image src="/assets/chevron-right.svg" class="arrow-icon"></image>
+      </view>
+      <view class="menu-item border-bottom">
+        <image src="/assets/settings.svg" class="menu-icon"></image>
+        <text class="menu-text">通用设置</text>
+        <image src="/assets/chevron-right.svg" class="arrow-icon"></image>
+      </view>
+      <view class="menu-item">
+        <image src="/assets/help-circle.svg" class="menu-icon"></image>
+        <text class="menu-text">帮助与反馈</text>
+        <image src="/assets/chevron-right.svg" class="arrow-icon"></image>
+      </view>
+    </view>
+
+    <!-- Logout -->
+    <view class="logout-btn">
+      <text>退出登录</text>
+    </view>
+
+    <!-- Padding for TabBar -->
+    <view style="height: 200rpx;"></view>
+  </scroll-view>
+</view>

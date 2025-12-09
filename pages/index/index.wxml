@@ -65,34 +65,41 @@
 </scroll-view>
 
 <!-- Bottom Input Area -->
-<view class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 z-50 pb-20" style="padding-bottom: {{safeAreaBottom + 50}}px;">
+<view class="fixed bottom-0 left-0 w-full bg-gradient-to-t from-slate-50 via-slate-50 to-transparent z-50" style="padding-bottom: {{safeAreaBottom + 60}}px; background: linear-gradient(to top, #F5F7FA 80%, rgba(245, 247, 250, 0));">
   
   <!-- Quick Actions -->
-  <scroll-view scroll-x class="whitespace-nowrap px-4 py-2 border-b border-slate-50" style="width: 100%;">
+  <scroll-view scroll-x class="whitespace-nowrap pb-3" style="width: 100%; padding-left: 16px; padding-right: 16px; margin-bottom: 8px; box-sizing: border-box;">
     <view class="flex gap-2">
       <block wx:for="{{quickActions}}" wx:key="text">
-        <view class="inline-flex items-center px-3 py-1 bg-white border border-slate-100 rounded-full text-xs font-medium text-slate-600 mr-2" bindtap="onQuickAction" data-action="{{item.text}}">
-           <van-icon name="{{item.icon}}" class="mr-1" color="{{item.color}}" />
+        <view class="inline-flex items-center px-3 py-1.5 bg-white/85 border border-slate-100 shadow-sm rounded-full text-xs font-medium text-slate-600 mr-2 active-scale-95 transition-transform" 
+              style="backdrop-filter: blur(4px); padding: 6px 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);"
+              bindtap="onQuickAction" data-action="{{item.text}}">
+           <van-icon name="{{item.icon}}" class="mr-1" color="{{item.color}}" style="margin-right: 4px;" />
            {{item.text}}
         </view>
       </block>
     </view>
   </scroll-view>
 
-  <view class="px-4 py-2 flex items-end gap-2 bg-white">
-    <view class="flex-1 bg-slate-50 rounded-2xl flex items-center p-1 border border-slate-100">
-      <van-icon name="add-o" size="24px" color="#94a3b8" class="p-2" />
-      <input 
-        class="flex-1 bg-transparent text-sm px-2 py-2" 
+  <view class="px-4 flex items-end gap-2" style="display: flex; flex-direction: row; width: 100%; box-sizing: border-box; border-top: 1px solid #eeeeee; padding-top: 10px;">
+    <view class="flex-1 bg-white rounded-3xl shadow-input flex items-end p-1 border border-slate-100" style="min-width: 0;">
+      <van-icon name="add-o" size="24px" color="#94a3b8" class="p-2 mb-1" />
+      <textarea 
+        class="flex-1 bg-transparent text-sm px-1 py-2" 
         placeholder="输入您的问题..." 
         value="{{inputValue}}"
         bindinput="onInput"
-        confirm-type="send"
-        bindconfirm="onSend"
-      />
-      <van-icon name="volume-o" size="20px" color="#94a3b8" class="p-2" />
+        auto-height
+        show-confirm-bar="{{false}}"
+        cursor-spacing="20"
+        maxlength="500"
+        disable-default-padding
+        style="min-height: 24px; max-height: 100px; line-height: 24px; padding-top: 10px; padding-bottom: 10px;"
+      ></textarea>
+      <!-- 使用 music-o 暂时替代麦克风，因为 Vant 标准库可能没有 mic -->
+      <van-icon name="music-o" size="24px" color="#94a3b8" class="p-2 mb-1" />
     </view>
-    <view class="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-all" bindtap="onSend">
+    <view class="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg active-scale-90 transition-all mb-1 shrink-0" bindtap="onSend" style="display: flex;">
       <van-icon name="guide-o" color="#fff" size="20px" />
     </view>
   </view>
